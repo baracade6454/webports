@@ -9,7 +9,6 @@
         background: #111;
         color: #fff;
         margin: 0;
-        padding: 0;
         display: flex;
         flex-direction: column;
         height: 100vh;
@@ -25,49 +24,30 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding: 20px;
+        padding: 15px;
+        gap: 12px;
         overflow-y: auto;
-        flex: 1;
-        gap: 15px;
     }
     .game-button {
         background: #4cc3ff;
         color: #000;
         border: none;
-        padding: 15px 25px;
-        font-size: 18px;
-        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 6px;
         cursor: pointer;
-        transition: 0.2s;
-        text-align: center;
         min-width: 180px;
+        text-align: center;
+        transition: 0.2s;
     }
     .game-button:hover {
         background: #39a0d0;
     }
-    #gameFrame {
-        display: none;
+    iframe {
+        flex: 1;
+        border: none;
         width: 100%;
         height: 100%;
-        border: none;
-        flex: 1;
-    }
-    #controls {
-        display: none;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 1000;
-    }
-    #controls button {
-        background: #4cc3ff;
-        color: #000;
-        border: none;
-        padding: 10px 15px;
-        margin-left: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 5px;
     }
 </style>
 </head>
@@ -76,61 +56,32 @@
 <header>WebPorts Games Menu</header>
 
 <div id="menu">
-    <button class="game-button" onclick="launchGame('Bad%20Parenting%201.html')">Bad Parenting 1</button>
-    <button class="game-button" onclick="launchGame('Baldi\'s%20Basics%20Classic%20Remastered.html')">Baldi's Basics Classic Remastered</button>
-    <button class="game-button" onclick="launchGame('Buckshot%20Roulette.html')">Buckshot Roulette</button>
-    <button class="game-button" onclick="launchGame('Celeste.html')">Celeste</button>
-    <button class="game-button" onclick="launchGame('Crazy%20Cattle%203D.html')">Crazy Cattle 3D</button>
-    <button class="game-button" onclick="launchGame('Fears%20to%20Fathom_%20Home%20Alone.html')">Fears to Fathom: Home Alone</button>
-    <button class="game-button" onclick="launchGame('Five%20Nights%20at%20Freddy\'s%202.html')">Five Nights at Freddy's 2</button>
-    <button class="game-button" onclick="launchGame('Five%20Nights%20at%20Freddy\'s%203.html')">Five Nights at Freddy's 3</button>
-    <button class="game-button" onclick="launchGame('Five%20Nights%20at%20Freddy\'s%204.html')">Five Nights at Freddy's 4</button>
-    <button class="game-button" onclick="launchGame('Five%20Nights%20at%20Freddy\'s_%20Sister%20Location.html')">Sister Location</button>
-    <button class="game-button" onclick="launchGame('Five%20Nights%20at%20Freddy\'s_%20Ultimate%20Custom%20Night.html')">Ultimate Custom Night</button>
-    <button class="game-button" onclick="launchGame('Friday%20Night%20Funkin.html')">Friday Night Funkin</button>
-    <button class="game-button" onclick="launchGame('Geometry%20Dash%20Lite.html')">Geometry Dash Lite</button>
-    <button class="game-button" onclick="launchGame('Jetpack%20Joyride.html')">Jetpack Joyride</button>
-    <button class="game-button" onclick="launchGame('R.E.P.O.html')">R.E.P.O</button>
-    <button class="game-button" onclick="launchGame('Riddle%20School.html')">Riddle School</button>
-    <button class="game-button" onclick="launchGame('Run%203.html')">Run 3</button>
-    <button class="game-button" onclick="launchGame('That\'s%20Not%20My%20Neighbor.html')">That's Not My Neighbor</button>
-    <button class="game-button" onclick="launchGame('WebFishing.html')">WebFishing</button>
-</div>
-
-<div id="controls">
-    <button onclick="goFullscreen()">Go Fullscreen</button>
-    <button onclick="closeGame()">Back to Menu</button>
+    <button class="game-button" onclick="loadGame('Bad%20Parenting%201.html')">Bad Parenting 1</button>
+    <button class="game-button" onclick="loadGame('Baldi%27s%20Basics%20Classic%20Remastered.html')">Baldi's Basics</button>
+    <button class="game-button" onclick="loadGame('Buckshot%20Roulette.html')">Buckshot Roulette</button>
+    <button class="game-button" onclick="loadGame('Celeste.html')">Celeste</button>
+    <button class="game-button" onclick="loadGame('Crazy%20Cattle%203D.html')">Crazy Cattle 3D</button>
+    <button class="game-button" onclick="loadGame('Fears%20to%20Fathom_%20Home%20Alone.html')">Fears to Fathom: Home Alone</button>
+    <button class="game-button" onclick="loadGame('Five%20Nights%20at%20Freddy%27s%202.html')">Five Nights at Freddy's 2</button>
+    <button class="game-button" onclick="loadGame('Five%20Nights%20at%20Freddy%27s%203.html')">Five Nights at Freddy's 3</button>
+    <button class="game-button" onclick="loadGame('Five%20Nights%20at%20Freddy%27s%204.html')">Five Nights at Freddy's 4</button>
+    <button class="game-button" onclick="loadGame('Five%20Nights%20at%20Freddy%27s_%20Sister%20Location.html')">FNAF: Sister Location</button>
+    <button class="game-button" onclick="loadGame('Five%20Nights%20at%20Freddy%27s_%20Ultimate%20Custom%20Night.html')">FNAF: Ultimate Custom Night</button>
+    <button class="game-button" onclick="loadGame('Friday%20Night%20Funkin.html')">Friday Night Funkin</button>
+    <button class="game-button" onclick="loadGame('Geometry%20Dash%20Lite.html')">Geometry Dash Lite</button>
+    <button class="game-button" onclick="loadGame('Jetpack%20Joyride.html')">Jetpack Joyride</button>
+    <button class="game-button" onclick="loadGame('R.E.P.O.html')">R.E.P.O</button>
+    <button class="game-button" onclick="loadGame('Riddle%20School.html')">Riddle School</button>
+    <button class="game-button" onclick="loadGame('Run%203.html')">Run 3</button>
+    <button class="game-button" onclick="loadGame('That%27s%20Not%20My%20Neighbor.html')">That's Not My Neighbor</button>
+    <button class="game-button" onclick="loadGame('WebFishing.html')">WebFishing</button>
 </div>
 
 <iframe id="gameFrame" src=""></iframe>
 
 <script>
-const menu = document.getElementById('menu');
-const gameFrame = document.getElementById('gameFrame');
-const controls = document.getElementById('controls');
-
-function launchGame(url) {
-    gameFrame.src = url;
-    gameFrame.style.display = 'block';
-    menu.style.display = 'none';
-    controls.style.display = 'block';
-}
-
-function closeGame() {
-    gameFrame.src = '';
-    gameFrame.style.display = 'none';
-    menu.style.display = 'flex';
-    controls.style.display = 'none';
-}
-
-function goFullscreen() {
-    if (gameFrame.requestFullscreen) {
-        gameFrame.requestFullscreen();
-    } else if (gameFrame.webkitRequestFullscreen) { /* Safari */
-        gameFrame.webkitRequestFullscreen();
-    } else if (gameFrame.msRequestFullscreen) { /* IE11 */
-        gameFrame.msRequestFullscreen();
-    }
+function loadGame(url) {
+    document.getElementById('gameFrame').src = url;
 }
 </script>
 
